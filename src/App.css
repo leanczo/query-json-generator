@@ -82,8 +82,8 @@ label {
 
 .button-container {
   display: flex;
-  align-self: end;
-  justify-content: end;
+  align-self: flex-end;
+  justify-content: flex-end;
 }
 
 /* Mobile styles */
@@ -112,7 +112,7 @@ label {
   .button-container {
     display: flex;
     align-self: center;
-    justify-content: start;
+    justify-content: flex-start;
     margin-top: 20px;
   }
 }

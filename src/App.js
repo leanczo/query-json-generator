@@ -36,18 +36,18 @@ const App = () => {
 
   return (
     <div className="root">
-      <h1>JSON Generator</h1>
+      <h1>JSON Query Builder</h1>
 
       <div className="card">
         <h3>Sort Criteria</h3>
         {sorts.map((sort, index) => (
-          <div>
-            <div key={index} className="item-row">
+          <div key={index}>
+            <div className="item-row">
               <div>
                 <label className="title-input">
                   Property Name{" "}
                   <input
-                    class="form-control"
+                    className="form-control"
                     type="text"
                     value={sort.propertyName}
                     onChange={(e) =>
@@ -77,18 +77,18 @@ const App = () => {
 
               <div className="button-container">
                 <button
-                  class="btn btn-danger"
+                  className="btn btn-danger"
                   onClick={() => removeSort(index)}
                 >
                   Remove
                 </button>
               </div>
             </div>
-            <hr class="solid"></hr>
+            <hr className="solid"></hr>
           </div>
         ))}
         <div>
-          <button class="btn btn-primary" onClick={addSort}>
+          <button className="btn btn-primary" onClick={addSort}>
             Add Sort Criterion
           </button>
         </div>
@@ -98,8 +98,8 @@ const App = () => {
 <div className="card">
         <h3>Filter Criteria</h3>
         {filters.map((filter, index) => (
-          <div>
-            <div key={index} className="item-row">
+          <div key={index}>
+            <div className="item-row">
               <label>
                 Property Name{" "}
                 <input
@@ -170,7 +170,7 @@ const App = () => {
           </div>
         ))}
         <div>
-          <button class="btn btn-primary" onClick={addFilter}>
+          <button className="btn btn-primary" onClick={addFilter}>
             Add Filter Criterion
           </button>
         </div>
@@ -178,7 +178,7 @@ const App = () => {
 
       <div className="card">
         <div>
-          <button class="btn btn-success" onClick={generateJSON}>
+          <button className="btn btn-success" onClick={generateJSON}>
             Generate JSON
           </button>
         </div>
