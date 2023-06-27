@@ -1,38 +1,118 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.root {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+h1 {
+  color: white !important;
+  font-size: 2.5em;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: 20px !important;
+}
+
+h3 {
+  color: white;
+  font-size: 1.25em;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  margin-top: 0;
+}
+
+.card {
+  padding: 20px;
+  margin: 30px 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  width: 80%;
+  background-color: #f9f9f9;
+}
+
+.item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  vertical-align: middle;
+  margin-bottom: 20px;
+}
+
+.item-row > * {
+  margin-right: 10px;
+  flex: 1;
+}
+
+.json-output {
+  width: 100%;
+  height: 200px;
+  margin-top: 10px;
+}
+
+.title-input {
+  padding-right: 20px;
+}
+.descending-label {
+  padding-right: 20px;
+}
+
+label {
+  font-size: 17px;
+  font-family: "Montserrat", sans-serif;
+  color: #333;
+}
+
+.button-container {
+  display: flex;
+  align-self: end;
+  justify-content: end;
+}
+
+/* Mobile styles */
+@media only screen and (max-width: 768px) {
+  .card {
+    width: 95%;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h3 {
+    font-size: 1em;
+  }
+
+  label {
+    font-size: 15px;
+  }
+
+  .item-row {
+    flex-direction: column;
+  }
+
+  .button-container {
+    display: flex;
+    align-self: center;
+    justify-content: start;
+    margin-top: 20px;
   }
 }
