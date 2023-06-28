@@ -1,3 +1,7 @@
+html {
+  font-family: 'Roboto';
+}
+
 .root {
   display: flex;
   justify-content: center;
@@ -23,8 +27,8 @@
 
 h1 {
   color: white !important;
-  font-size: 2.5em;
-  font-family: "Montserrat", sans-serif;
+  font-size: 2em !important;
+  font-family: "Roboto", sans-serif;
   text-align: center;
   margin-bottom: 0;
   margin-top: 20px !important;
@@ -32,8 +36,8 @@ h1 {
 
 h3 {
   color: white;
-  font-size: 1.25em;
-  font-family: "Montserrat", sans-serif;
+  font-size: 1.4em !important;;
+  font-family: "Roboto", sans-serif;
   text-align: center;
   margin-top: 0;
 }
@@ -43,7 +47,7 @@ h3 {
   margin: 30px 10px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  width: 80%;
+  width: 100%;
   background-color: #f9f9f9;
 }
 
@@ -63,7 +67,7 @@ h3 {
 
 .json-output {
   width: 100%;
-  height: 200px;
+  height: 200px !important;
   margin-top: 10px;
 }
 
@@ -76,14 +80,37 @@ h3 {
 
 label {
   font-size: 17px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #333;
+  padding: 0;
+  margin: 0;
 }
 
 .button-container {
   display: flex;
   align-self: flex-end;
   justify-content: flex-end;
+}
+
+.clip-container{
+  margin-left: 10px;
+}
+
+.clip-label {
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  padding: 0;
+  margin: 0;
+  display:inline;
+}
+
+.copy-success {
+  color: green;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  margin-left: 20px;
+  display:inline;
 }
 
 /* Mobile styles */
@@ -107,12 +134,23 @@ label {
 
   .item-row {
     flex-direction: column;
+    align-items: flex-start;
   }
 
   .button-container {
     display: flex;
-    align-self: center;
+    align-self:  flex-start;;
     justify-content: flex-start;
     margin-top: 20px;
   }
+
+  .copy-success {
+    color: green;
+    font-size: 15px;
+    font-family: "Roboto", sans-serif;
+    margin: 0px 0px;
+    margin-top: 5px;
+    display: flex;
+  }
 }
+
