@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
+import SortCard from './components/SortCard';
+import FilterCard from './components/FilterCard';
+import JsonComponent from './components/JsonComponent/JsonComponent';
+import Base64Card from './components/Base64Card';
 
 const App = () => {
   const [sorts, setSorts] = useState([]);
@@ -85,163 +89,28 @@ const App = () => {
 
   return (
     <div className="root">
-      <div className=" container">
+      <div className="container">
         <h1>JSON Query Builder</h1>
-
-        <div className="card">
-          <h3>Sort Criteria</h3>
-          {sorts.map((sort, index) => (
-            <div key={index}>
-              <div className="item-row">
-                <div>
-                  <label className="title-input">
-                    Property Name{" "}
-                    <input
-                      className="form-control"
-                      type="text"
-                      value={sort.propertyName}
-                      onChange={(e) =>
-                        setSorts(
-                          sorts.map((s, i) =>
-                            i === index
-                              ? { ...s, propertyName: e.target.value }
-                              : s
-                          )
-                        )
-                      }
-                    />
-                  </label>
-                  <label className="descending-label">Descending </label>
-                  <input
-                    type="checkbox"
-                    checked={sort.descending}
-                    onChange={(e) =>
-                      setSorts(
-                        sorts.map((s, i) =>
-                          i === index
-                            ? { ...s, descending: e.target.checked }
-                            : s
-                        )
-                      )
-                    }
-                  />
-                </div>
-
-                <div className="button-container">
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => removeSort(index)}
-                  >
-                    Remove
-                  </button>
-                </div>
-              </div>
-              <hr className="solid"></hr>
-            </div>
-          ))}
-          <div>
-            <button className="btn btn-primary" onClick={addSort}>
-              Add Sort Criterion
-            </button>
-          </div>
-        </div>
-
-        <div className="card">
-          <h3>Filter Criteria</h3>
-          {filters.map((filter, index) => (
-            <div key={index}>
-              <div className="item-row">
-                <label>
-                  Property Name{" "}
-                  <input
-                    className="form-control"
-                    type="text"
-                    value={filter.propertyName}
-                    onChange={(e) =>
-                      setFilters(
-                        filters.map((f, i) =>
-                          i === index
-                            ? { ...f, propertyName: e.target.value }
-                            : f
-                        )
-                      )
-                    }
-                  />
-                </label>
-                <br />
-                <label>
-                  Type{" "}
-                  <select
-                    className="form-select"
-                    value={filter.type}
-                    onChange={(e) =>
-                      setFilters(
-                        filters.map((f, i) =>
-                          i === index ? { ...f, type: e.target.value } : f
-                        )
-                      )
-                    }
-                  >
-                    <option value="eq">Equal</option>
-                    <option value="neq">NotEquals</option>
-                    <option value="gt">GreaterThan</option>
-                    <option value="lt">LowerThan</option>
-                    <option value="gte">GreaterThanEquals</option>
-                    <option value="lte">LowerThanEquals</option>
-                    <option value="like">Like</option>
-                    <option value="between">Between</option>
-                    <option value="contains">Contains</option>
-                  </select>
-                </label>
-                <br />
-                <label>
-                  Value{" "}
-                  <input
-                    className="form-control"
-                    type="text"
-                    value={filter.value}
-                    onChange={(e) => handleValueChange(e, index)}
-                  />
-                </label>
-                <div className="button-container">
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => removeFilter(index)}
-                  >
-                    Remove
-                  </button>
-                </div>
-                <br />
-              </div>
-              <hr className="solid" />
-            </div>
-          ))}
-          <div>
-            <button className="btn btn-primary" onClick={addFilter}>
-              Add Filter Criterion
-            </button>
-          </div>
-        </div>
-
-        <div className="card">
-          <div>
-            <button className="btn btn-success" onClick={generateJSON}>
-              Generate JSON
-            </button>
-            <button
-              className="btn btn-success clip-container"
-              onClick={copyToClipboard}
-            >
-            <h className="copy-label">Copy</h>
-            </button>
-            {copySuccess ? (
-              <div className="copy-success">Copied to clipboard!</div>
-            ) : null}
-          </div>
-          <div>
-            <textarea className="form-control json-output" value={jsonResult} />
-          </div>
-        </div>
+        <SortCard
+          sorts={sorts}
+          setSorts={setSorts}
+          addSort={addSort}
+          removeSort={removeSort}
+        />
+        <FilterCard
+          filters={filters}
+          setFilters={setFilters}
+          addFilter={addFilter}
+          removeFilter={removeFilter}
+          handleValueChange={handleValueChange}
+        />
+     <JsonComponent
+        jsonResult={jsonResult}
+        copyToClipboard={copyToClipboard}
+        copySuccess={copySuccess}
+        generateJSON={generateJSON}
+      />
+        <Base64Card />
       </div>
     </div>
   );

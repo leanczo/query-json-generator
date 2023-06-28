@@ -1,0 +1,14 @@
+.json-component-container {
+  display: flex; /* Utiliza Flexbox para el layout */
+  gap: 20px; /* Espacio entre las tarjetas */
+}
+.base64-header {
+  display: flex;
+  justify-content: center; /* Centrar el contenido horizontalmente */
+  position: relative; /* Necesario para el posicionamiento absoluto de los elementos internos */
+}
+
+.copy-base64-button {
+  position: absolute; /* Posicionar el botón de forma absoluta dentro de .base64-header */
+  left: 0px; /* Posicionarlo a 15px del borde izquierdo */
+}
