@@ -1,12 +1,25 @@
 import React, { useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
-import SortCard from './components/SortCard';
-import FilterCard from './components/FilterCard';
-import JsonComponent from './components/JsonComponent/JsonComponent';
-import Base64Card from './components/Base64Card';
+import SortCard from "./components/SortCard/SortCard";
+import FilterCard from "./components/FilterCard/FilterCard";
+import JsonComponent from "./components/JsonComponent/JsonComponent";
+import Base64Card from "./components/Base64Card/Base64Card";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
+  const notify = () =>
+    toast.success("Copied!", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   const [sorts, setSorts] = useState([]);
   const [filters, setFilters] = useState([
     { propertyName: "", type: "eq", value: "" },
@@ -49,21 +62,24 @@ const App = () => {
     setJsonResult(JSON.stringify(queryCriteria, null, 2));
   };
 
-  const [copySuccess, setCopySuccess] = useState(false);
-
   const handleValueChange = (e, index) => {
     let value = e.target.value;
-  
+
     // Intente convertir el valor en un número
     if (!isNaN(value) && value.trim() !== "") {
       value = Number(value);
-    } else if (value.toLowerCase() === "true" || value.toLowerCase() === "false") {
+    } else if (
+      value.toLowerCase() === "true" ||
+      value.toLowerCase() === "false"
+    ) {
       // Si el valor es "true" o "false" (en cualquier caso), conviértalo en un booleano
       value = value.toLowerCase() === "true";
     }
-  
+
     // Actualizar el estado de los filtros
-    setFilters(filters.map((f, i) => (i === index ? { ...f, value: value } : f)));
+    setFilters(
+      filters.map((f, i) => (i === index ? { ...f, value: value } : f))
+    );
   };
 
   const copyToClipboard = () => {
@@ -71,13 +87,7 @@ const App = () => {
       navigator.clipboard
         .writeText(jsonResult)
         .then(() => {
-          // Cambia el valor de copySuccess a true cuando el texto se haya copiado con éxito
-          setCopySuccess(true);
-
-          // Opcional: Restablece el mensaje después de 2 segundos
-          setTimeout(() => {
-            setCopySuccess(false);
-          }, 2000);
+          notify(true);
         })
         .catch((err) => {
           console.error("Error al copiar texto al portapapeles", err);
@@ -90,28 +100,35 @@ const App = () => {
   return (
     <div className="root">
       <div className="container">
-        <h1>JSON Query Builder</h1>
-        <SortCard
-          sorts={sorts}
-          setSorts={setSorts}
-          addSort={addSort}
-          removeSort={removeSort}
-        />
-        <FilterCard
-          filters={filters}
-          setFilters={setFilters}
-          addFilter={addFilter}
-          removeFilter={removeFilter}
-          handleValueChange={handleValueChange}
-        />
-     <JsonComponent
-        jsonResult={jsonResult}
-        copyToClipboard={copyToClipboard}
-        copySuccess={copySuccess}
-        generateJSON={generateJSON}
-      />
-        <Base64Card />
+        <h2 className="title">JSON Query Builder</h2>
+        <div className="grid-wrapper">
+          <SortCard
+            sorts={sorts}
+            setSorts={setSorts}
+            addSort={addSort}
+            removeSort={removeSort}
+          />
+          <FilterCard
+            filters={filters}
+            setFilters={setFilters}
+            addFilter={addFilter}
+            removeFilter={removeFilter}
+            handleValueChange={handleValueChange}
+          />
+          <div className="button-app-container">
+            <button className="btn btn-dark btn-lg" onClick={generateJSON}>
+              Generate JSON
+            </button>
+          </div>
+          <JsonComponent
+            jsonResult={jsonResult}
+            copyToClipboard={copyToClipboard}
+            generateJSON={generateJSON}
+          />
+          <Base64Card />
+        </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

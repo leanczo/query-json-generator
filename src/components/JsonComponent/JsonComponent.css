@@ -1,14 +1,63 @@
 .json-component-container {
-  display: flex; /* Utiliza Flexbox para el layout */
-  gap: 20px; /* Espacio entre las tarjetas */
+  display: flex;
+  gap: 20px;
+  margin: 0;
 }
+
 .base64-header {
   display: flex;
-  justify-content: center; /* Centrar el contenido horizontalmente */
-  position: relative; /* Necesario para el posicionamiento absoluto de los elementos internos */
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 .copy-base64-button {
-  position: absolute; /* Posicionar el botón de forma absoluta dentro de .base64-header */
-  left: 0px; /* Posicionarlo a 15px del borde izquierdo */
+  position: absolute;
+  left: 0px; /* Modificado para agregar un poco de espacio */
+  top: 50%; /* Centra verticalmente el botón */
+  transform: translateY(-50%); /* Asegura un centrado vertical preciso */
+}
+
+.base64-title {
+  margin: 0; /* Eliminar márgenes predeterminados */
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.copy-success {
+  position: absolute; /* Posicionar el mensaje de forma absoluta dentro de .base64-header */
+  right: 15px; /* Posicionarlo a 15px del borde derecho */
+  top: 50%; /* Centra verticalmente el mensaje */
+  transform: translateY(-50%); /* Asegura un centrado vertical preciso */
+  color: green; /* Color del texto */
+  font-size: 14px; /* Tamaño de la fuente */
+}
+
+.json-output {
+  width: 100%;
+  min-height: 190px !important;
+  resize: vertical; /* Permitir redimensionar solo verticalmente */
+  border: none;
+  padding: 10px;
+  font-family: monospace; /* Usar una fuente monoespaciada para una mejor legibilidad de código/json */
+}
+
+.card {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  background-color: #f9f9f9;
+  overflow: hidden; /* Para que los bordes redondeados se apliquen también a los hijos */
+  padding: 20px;
+  width: 100%;
+}
+
+/* Mobile styles */
+@media only screen and (max-width: 768px) {
+  .json-component-container {
+    display: grid;
+    gap: 20px;
+    margin: 0;
+  }
 }

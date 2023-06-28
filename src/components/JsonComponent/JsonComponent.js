@@ -1,18 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
 import "./JsonComponent.css";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const JsonComponent = ({
-  jsonResult,
-  copyToClipboard,
-  copySuccess,
-  generateJSON,
-}) => {
-  const [copyBase64Success, setCopyBase64Success] = useState(false);
+const JsonComponent = ({ jsonResult, copyToClipboard }) => {
+  const notify = () => toast.success('Copied!', {
+    position: "top-right",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
+ 
+  const notifyError = () => toast.error('Failed', {
+    position: "top-right",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
 
   const toBase64 = (str) => {
     try {
       return btoa(unescape(encodeURIComponent(str)));
     } catch (e) {
+      notifyError();
       console.error("Failed to convert JSON to Base64", e);
       return "";
     }
@@ -23,12 +41,10 @@ const JsonComponent = ({
       navigator.clipboard
         .writeText(toBase64(jsonResult))
         .then(() => {
-          setCopyBase64Success(true);
-          setTimeout(() => {
-            setCopyBase64Success(false);
-          }, 2000);
+          notify();
         })
         .catch((err) => {
+          notifyError();
           console.error("Error copying Base64 to clipboard", err);
         });
     } else {
@@ -42,19 +58,14 @@ const JsonComponent = ({
     <div className="json-component-container">
       {/* Card for JSON Output */}
       <div className="card">
-        <div>
-          <button className="btn btn-success" onClick={generateJSON}>
-            Generate JSON
-          </button>
+        <div className="base64-header">
           <button
-            className="btn btn-success clip-container"
+            className="btn btn-dark copy-base64-button"
             onClick={copyToClipboard}
           >
-            <h className="copy-label">Copy</h>
+            Copy
           </button>
-          {copySuccess ? (
-            <div className="copy-success">Copied to clipboard!</div>
-          ) : null}
+          <h3 className="base64-title">JSON</h3>
         </div>
         <div>
           <textarea
@@ -69,13 +80,10 @@ const JsonComponent = ({
       <div className="card">
         <div className="base64-header">
           <button
-            className="btn btn-success copy-base64-button"
+            className="btn btn-dark copy-base64-button"
             onClick={copyBase64ToClipboard}
           >
-                {copyBase64Success ? (
-          <div className="copy-success">Base64 Copied to clipboard!</div>
-        ) : null}
-            Copy Base64
+            Copy
           </button>
           <h3 className="base64-title">Base64 Encoded</h3>
         </div>

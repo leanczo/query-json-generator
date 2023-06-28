@@ -1,0 +1,45 @@
+.filter-card {
+  padding: 20px;
+  margin: 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  background-color: #f9f9f9;
+}
+
+.filter-item-row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  align-self: flex-end;
+}
+
+.filter-hr {
+  border: none;
+  border-top: 1px solid #000;
+  margin: 10px 0;
+}
+
+/* Mobile styles */
+@media only screen and (max-width: 768px) {
+  .filter-item-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+
+  .filter-button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-self: flex-start;
+    margin-top: 20px;
+  }
+}

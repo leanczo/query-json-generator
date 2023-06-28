@@ -1,14 +1,15 @@
 import React from "react";
+import "./SortCard.css"; // Importa los estilos específicos de SortCard
 
 const SortCard = ({ sorts, setSorts, addSort, removeSort }) => {
   return (
-    <div className="card">
-      <h3>Sort Criteria</h3>
+    <div className="sort-card"> {/* Usar clase específica */}
+      <h4 className="text-center">Sort</h4>
       {sorts.map((sort, index) => (
         <div key={index}>
-          <div className="item-row">
+          <div className="sort-item-row"> {/* Usar clase específica */}
             <div>
-              <label className="title-input">
+              <label className="sort-title-input"> {/* Usar clase específica */}
                 Property Name{" "}
                 <input
                   className="form-control"
@@ -23,7 +24,7 @@ const SortCard = ({ sorts, setSorts, addSort, removeSort }) => {
                   }
                 />
               </label>
-              <label className="descending-label">Descending </label>
+              <label className="sort-descending-label">Descending </label> {/* Usar clase específica */}
               <input
                 type="checkbox"
                 checked={sort.descending}
@@ -39,18 +40,18 @@ const SortCard = ({ sorts, setSorts, addSort, removeSort }) => {
               />
             </div>
 
-            <div className="button-container">
+            <div className="sort-button-container"> {/* Usar clase específica */}
               <button className="btn btn-danger" onClick={() => removeSort(index)}>
                 Remove
               </button>
             </div>
           </div>
-          <hr className="solid"></hr>
+          <hr className="sort-hr"></hr> {/* Usar clase específica */}
         </div>
       ))}
       <div>
-        <button className="btn btn-primary" onClick={addSort}>
-          Add Sort Criterion
+        <button className="btn btn-dark" onClick={addSort}>
+          Add Sort
         </button>
       </div>
     </div>

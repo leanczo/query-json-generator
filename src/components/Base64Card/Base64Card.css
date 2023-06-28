@@ -1,0 +1,48 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+}
+
+.output {
+    width: 100%;
+    min-height: 190px !important;
+    resize: vertical; /* Permitir redimensionar solo verticalmente */
+    border: none;
+    padding: 10px;
+    font-family: monospace; /* Usar una fuente monoespaciada para una mejor legibilidad de código/json */
+  }
+
+@media screen and (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "convertToJSON convertToBase64"
+      "base64Input jsonOutput"
+      "copyJson copyBase64";
+  }
+
+  .convert-to-json {
+    grid-area: convertToJSON;
+  }
+
+  .convert-to-base64 {
+    grid-area: convertToBase64;
+  }
+
+  .base64-input {
+    grid-area: base64Input;
+  }
+
+  .json-output {
+    grid-area: jsonOutput;
+  }
+
+  .copyJson {
+    grid-area: copyJson;
+  }
+
+  .copyBase64 {
+    grid-area: copyBase64;
+  }
+}

@@ -1,31 +1,44 @@
 import React from "react";
+import "./FilterCard.css"; // Importa los estilos específicos de FilterCard
 
-const FilterCard = ({ filters, setFilters, addFilter, removeFilter, handleValueChange }) => {
+const FilterCard = ({
+  filters,
+  setFilters,
+  addFilter,
+  removeFilter,
+  handleValueChange,
+}) => {
   return (
-    <div className="card">
-      <h3>Filter Criteria</h3>
+    <div className="filter-card">
+      {" "}
+      {/* Usar clase específica */}
+      <h4 className="text-center">Filter</h4>
       {filters.map((filter, index) => (
         <div key={index}>
-          <div className="item-row">
+          <div className="filter-item-row">
+            {" "}
+            {/* Usar clase específica */}
             <label>
+              {" "}
+              {/* Usar clase específica */}
               Property Name{" "}
               <input
                 className="form-control"
                 type="text"
+                placeholder="Enter property name"
                 value={filter.propertyName}
                 onChange={(e) =>
                   setFilters(
                     filters.map((f, i) =>
-                      i === index
-                        ? { ...f, propertyName: e.target.value }
-                        : f
+                      i === index ? { ...f, propertyName: e.target.value } : f
                     )
                   )
                 }
               />
             </label>
-            <br />
             <label>
+              {" "}
+              {/* Usar clase específica */}
               Type{" "}
               <select
                 className="form-select"
@@ -49,17 +62,21 @@ const FilterCard = ({ filters, setFilters, addFilter, removeFilter, handleValueC
                 <option value="contains">Contains</option>
               </select>
             </label>
-            <br />
             <label>
+              {" "}
+              {/* Usar clase específica */}
               Value{" "}
               <input
                 className="form-control"
                 type="text"
+                placeholder="Enter value"
                 value={filter.value}
                 onChange={(e) => handleValueChange(e, index)}
               />
             </label>
-            <div className="button-container">
+            <div className="filter-button-container">
+              {" "}
+              {/* Usar clase específica */}
               <button
                 className="btn btn-danger"
                 onClick={() => removeFilter(index)}
@@ -67,14 +84,13 @@ const FilterCard = ({ filters, setFilters, addFilter, removeFilter, handleValueC
                 Remove
               </button>
             </div>
-            <br />
           </div>
-          <hr className="solid" />
+          <hr className="filter-hr"></hr> {/* Usar clase específica */}
         </div>
       ))}
       <div>
-        <button className="btn btn-primary" onClick={addFilter}>
-          Add Filter Criterion
+        <button className="btn btn-dark" onClick={addFilter}>
+          Add Filter
         </button>
       </div>
     </div>
