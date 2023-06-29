@@ -77,6 +77,7 @@ const Base64Card = () => {
         <textarea
           className="form-control base64-input output"
           value={base64Input}
+          placeholder="Enter Base64"
           onChange={(e) => setBase64Input(e.target.value)}
         />
         <button
@@ -94,6 +95,7 @@ const Base64Card = () => {
         <textarea
           className="form-control output"
           value={jsonOutput}
+          placeholder="Enter JSON"
           onChange={(e) => setJsonOutput(e.target.value)}
         />
         <button
