@@ -48,8 +48,6 @@ This will run the app in development mode. Open [http://localhost:3000](http://l
 
 3. **Copy the Result**: You can now copy the resulting JSON to your clipboard for use in your application or for saving to a file.
 
-![Usage Screenshot](./public/test.png)
-
 ## Contributing
 
 Contributions to JSON Query Builder are welcome! If you have an idea for a feature or enhancement, or if you've found a bug, please open an issue to discuss it. Pull requests are also appreciated. Please make sure that your code follows the existing style for consistency.
