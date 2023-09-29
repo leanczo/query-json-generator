@@ -1,14 +1,36 @@
 # JSON Query Builder
 
-This web application allows users to dynamically build JSON queries through an easy-to-use interface. It is specifically designed to generate JSON with a predefined structure by filling in inputs, adding or removing values, and generating the resulting JSON with the click of a button.
+This web application was created for a Company to allow users within the organization to dynamically build JSON queries through an easy-to-use interface. It is specifically designed to generate JSON with a predefined structure required by the company's systems by filling in inputs, adding or removing values, and generating the resulting JSON with the click of a button.
 
-![Project Screenshot](./public/screenshot.png) 
+![Project Screenshot](./public/screenshot.png)
+
+Below is an example of the JSON structure that this application generates:
+
+```json
+{
+  "Sorts": [
+    {
+      "propertyName": "name",
+      "descending": true
+    }
+  ],
+  "Filters": [
+    {
+      "propertyName": "name",
+      "type": "eq",
+      "value": "Example"
+    }
+  ]
+}
+```
 
 ## Table of Contents
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
+- [JSON Query Builder](#json-query-builder)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Contributing](#contributing)
+  - [Acknowledgements](#acknowledgements)
 
 ## Installation
 
