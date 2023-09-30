@@ -15,11 +15,11 @@
 
 @media screen and (min-width: 768px) {
   .grid-container {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.50fr 0.25fr 0.25fr;
     grid-template-areas:
-      "convertToJSON convertToBase64"
-      "base64Input jsonOutput"
-      "copyJson copyBase64";
+      "convertToJSON convertToBase64 convertToBase64"
+      "base64Input jsonOutput jsonOutput"
+      "copyJson copyBase64 beauty";
   }
 
   .convert-to-json {
@@ -44,5 +44,9 @@
 
   .copyBase64 {
     grid-area: copyBase64;
+  }
+
+  .beauty {
+    grid-area: beauty;
   }
 }

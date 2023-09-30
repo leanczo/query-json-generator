@@ -16,8 +16,8 @@ const Base64Card = () => {
       theme: "light",
     });
 
-  const notifyError = () =>
-    toast.error("Failed", {
+  const notifyError = (message) =>
+    toast.error(message ?? "Failed", {
       position: "top-right",
       autoClose: 2000,
       hideProgressBar: true,
@@ -64,6 +64,18 @@ const Base64Card = () => {
     );
   };
 
+  const beautifyJSON = () => {
+    try {
+      const parsedJSON = JSON.parse(jsonOutput);
+      const beautifiedJSON = JSON.stringify(parsedJSON, null, 2);
+      setJsonOutput(beautifiedJSON);
+    } catch (error) {
+      console.error("Error beautifying JSON:", error);
+      notifyError("Error beautifying JSON");
+    }
+  };
+  
+
   return (
     <div className="card">
       <h4>Base64 to JSON Converter</h4>
@@ -93,17 +105,25 @@ const Base64Card = () => {
           Convert to Base64
         </button>
         <textarea
-          className="form-control output"
+          className="form-control json-output"
           value={jsonOutput}
           placeholder="Enter JSON"
           onChange={(e) => setJsonOutput(e.target.value)}
         />
+       
         <button
           className="btn btn-dark copyBase64"
           onClick={() => copyToClipboard(jsonOutput)}
         >
           Copy
         </button>
+        <button
+          className="btn btn-dark beauty"
+          onClick={beautifyJSON}
+        >
+          Beauty
+        </button>
+  
       </div>
     </div>
   );
